@@ -1,0 +1,15 @@
+extends layout 
+
+block content
+    h1= title
+    - var results = [{"dishName": "Pizza", "dishPrice": 4.99, "mainIngredient": "Dough"},{"dishName": "Aranchini", "dishPrice": 5.76, "mainIngredient": "Rice"},{"dishName": "Lasagna", "dishPrice": 3.45, "mainIngredient": "Noodles"}]
+    div.container-fluid 
+        div.row 
+            each item, index in results
+                div.col-sm-2(onclick=`buy(${index})`) Dish: #{item["dishName"]} <br> Price: #{item["dishPrice"]} <br> Main Ingredient: #{item["mainIngredient"]}
+    
+
+    script.
+        function buy(index) {
+            alert("You purchased item " + index)
+        }

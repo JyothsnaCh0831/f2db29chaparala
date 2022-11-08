@@ -31,3 +31,16 @@ exports.italianDish_delete = function(req, res) {
 exports.italianDish_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: Italian Dish update PUT' + req.params.id); 
 }; 
+
+// VIEWS 
+// Handle a show all view 
+exports.italianDish_view_all_Page = async function(req, res) { 
+    try{ 
+        theDishes = await italianDish.find(); 
+        res.render('italianDish', { title: 'Italian Dish Search Results', results: theDishes }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 

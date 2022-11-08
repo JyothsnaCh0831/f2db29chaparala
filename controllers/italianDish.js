@@ -1,8 +1,15 @@
 var italianDish = require('../models/italianDish'); 
  
 // List of all dishes
-exports.italianDish_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Italian Dish list'); 
+exports.italianDish_list = async function(req, res) { 
+    try{ 
+        theDishes = await italianDish.find(); 
+        res.send(theDishes); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // for a specific dish. 

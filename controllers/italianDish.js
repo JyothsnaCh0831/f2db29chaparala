@@ -18,9 +18,24 @@ exports.italianDish_detail = function(req, res) {
 }; 
  
 // Handle dish create on POST. 
-exports.italianDish_create_post = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Italian Dish create POST'); 
-}; 
+exports.italianDish_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new italianDish(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object
+    document.dishName = req.body.dishName; 
+    document.dishPrice = req.body.dishPrice; 
+    document.mainIngredient = req.body.mainIngredient; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};  
  
 // Handle dish delete form on DELETE. 
 exports.italianDish_delete = function(req, res) { 

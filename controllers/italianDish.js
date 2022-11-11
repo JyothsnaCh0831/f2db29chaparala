@@ -13,8 +13,15 @@ exports.italianDish_list = async function(req, res) {
 }; 
  
 // for a specific dish. 
-exports.italianDish_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Italian Dish detail: ' + req.params.id); 
+exports.italianDish_detail = async function(req, res) { 
+    console.log("detail "  + req.params.id) 
+    try { 
+        result = await italianDish.findById(req.params.id)
+        res.send(result)
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    }  
 }; 
  
 // Handle dish create on POST. 

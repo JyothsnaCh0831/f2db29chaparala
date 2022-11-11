@@ -50,9 +50,23 @@ exports.italianDish_delete = function(req, res) {
 }; 
  
 // Handle dish update form on PUT. 
-exports.italianDish_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Italian Dish update PUT' + req.params.id); 
-}; 
+exports.italianDish_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await italianDish.findById(req.params.id) 
+        // Do updates of properties 
+        if(req.body.dishName)  
+               toUpdate.dishName = req.body.dishName; 
+        if(req.body.dishPrice) toUpdate.dishPrice = req.body.dishPrice; 
+        if(req.body.mainIngredient) toUpdate.mainIngredient = req.body.mainIngredient; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`); 
+    } 
+};
 
 // VIEWS 
 // Handle a show all view 

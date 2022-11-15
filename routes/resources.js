@@ -29,5 +29,10 @@ router.get('/italianDish', italianDish_controller.italianDish_list);
 
 // GET detail italian dish page
 router.get('/detail', italianDish_controller.italianDish_view_one_Page); 
+
+/* GET create dish page */ 
+router.get('/create', italianDish_controller.italianDish_create_Page); 
+
+
  
 module.exports = router; 

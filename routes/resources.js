@@ -26,5 +26,8 @@ router.get('/italianDish/:id', italianDish_controller.italianDish_detail);
  
 // GET request for list of all Dish items. 
 router.get('/italianDish', italianDish_controller.italianDish_list); 
+
+// GET detail italian dish page
+router.get('/detail', italianDish_controller.italianDish_view_one_Page); 
  
 module.exports = router; 

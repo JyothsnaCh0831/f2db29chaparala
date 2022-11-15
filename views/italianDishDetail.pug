@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let dishId = toShow._id 
+  - let dishName = toShow.dishName 
+  - let dishPrice = toShow.dishPrice 
+  - let mainIngredient = toShow.mainIngredient 
+  div 
+    div.row 
+      div(class='italianDishAttr mr-3') Dish ID is: 
+      div #{dishId} 
+    div.row 
+      div(class='italianDishAttr mr-3') Dish Name is: 
+      div #{dishName} 
+    div.row 
+      div(class='italianDishAttr mr-3') Dish Price is: 
+      div #{dishPrice} 
+    div.row 
+      div(class='italianDishAttr mr-3') Main Ingredient is: 
+      div #{mainIngredient} 

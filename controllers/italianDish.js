@@ -45,10 +45,18 @@ exports.italianDish_create_post = async function(req, res) {
 };  
  
 // Handle dish delete form on DELETE. 
-exports.italianDish_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Italian Dish delete DELETE ' + req.params.id); 
+exports.italianDish_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await italianDish.findByIdAndDelete(req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
- 
+
 // Handle dish update form on PUT. 
 exports.italianDish_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`) 
@@ -80,3 +88,17 @@ exports.italianDish_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+
+// Handle a show one view with id specified by query 
+exports.italianDish_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await italianDish.findById( req.query.id) 
+        res.render('italianDishDetail',  { title: 'Italian Dish Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 

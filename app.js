@@ -31,7 +31,6 @@ var gridBuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resources');
 
-
 var app = express();
 
 // view engine setup

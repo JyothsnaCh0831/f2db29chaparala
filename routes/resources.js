@@ -33,6 +33,9 @@ router.get('/detail', italianDish_controller.italianDish_view_one_Page);
 /* GET create dish page */ 
 router.get('/create', italianDish_controller.italianDish_create_Page); 
 
+/* GET create update page */ 
+router.get('/update', italianDish_controller.italianDish_update_Page); 
+
 
  
 module.exports = router; 

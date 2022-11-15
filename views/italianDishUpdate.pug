@@ -1,0 +1,42 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  - let dishId = toShow._id
+  - let dishName = toShow.dishName 
+  - let dishPrice = toShow.dishPrice 
+  - let mainIngredient = toShow.mainIngredient
+ 
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{dishId} 
+  - let actionid = "/resource/italianDish/" + dishId
+  form(id='dishForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.italianDishAttr(for='dishName') Dish Name 
+        input#dishName(type='text', name='DishName', value=`${dishName}`) 
+    div.form-group 
+        label.italianDishAttr(for='dishPrice') Dish Price 
+        input#dishPrice(type='number', name='dishPrice', step='any', value=`${dishPrice}`) 
+    div.form-group 
+        label.italianDishAttr(for='mainIngredient') Main Ingredient
+        input#mainIngredient(type='text', name='mainIngredient', value=`${mainIngredient}`) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['dishForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 

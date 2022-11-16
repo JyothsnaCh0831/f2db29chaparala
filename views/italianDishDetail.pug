@@ -1,22 +1,23 @@
 extends layout 
  
 block content 
-  h1= title 
- 
-  - let dishId = toShow._id 
-  - let dishName = toShow.dishName 
-  - let dishPrice = toShow.dishPrice 
-  - let mainIngredient = toShow.mainIngredient 
-  div 
-    div.row 
-      div(class='italianDishAttr mr-3') Dish ID is: 
-      div #{dishId} 
-    div.row 
-      div(class='italianDishAttr mr-3') Dish Name is: 
-      div #{dishName} 
-    div.row 
-      div(class='italianDishAttr mr-3') Dish Price is: 
-      div #{dishPrice} 
-    div.row 
-      div(class='italianDishAttr mr-3') Main Ingredient is: 
-      div #{mainIngredient} 
+  div(class='container', style='border: 2px solid #001253; width: 450px;')
+    h1(style="text-align: center; color: #54B435")= title 
+    br
+    - let dishId = toShow._id 
+    - let dishName = toShow.dishName 
+    - let dishPrice = toShow.dishPrice 
+    - let mainIngredient = toShow.mainIngredient 
+    div(class='container' style="text-align: center; width: 500px;")
+      div(class='row mb-3')
+        div(class='col-3' style='color: #5F9DF7; font-weight: bold;') Dish ID 
+        div(class='italianDishAttr detailData col-6' style='color: white;') #{dishId} 
+      div(class='row mb-3')
+        div(class='col-3' style='color: #5F9DF7; font-weight: bold;') Dish Name
+        div(class='italianDishAttr detailData col-6' style='color: white;') #{dishName} 
+      div(class='row mb-3') 
+        div(class='col-3' style='color: #5F9DF7; font-weight: bold;') Dish Price 
+        div(class='italianDishAttr detailData col-6' style='color: white;') #{dishPrice} 
+      div(class='row mb-3')
+        div(class='col-3' style='color: #5F9DF7; font-weight: bold;') Main Ingredient 
+        div(class='italianDishAttr detailData col-6' style='color: white;') #{mainIngredient} 

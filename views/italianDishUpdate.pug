@@ -1,27 +1,33 @@
 extends layout 
  
 block content 
-  h1= title 
-  - let dishId = toShow._id
-  - let dishName = toShow.dishName 
-  - let dishPrice = toShow.dishPrice 
-  - let mainIngredient = toShow.mainIngredient
- 
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{dishId} 
-  - let actionid = "/resource/italianDish/" + dishId
-  form(id='dishForm', action=actionid, method="PUT") 
-    div.form-group 
-        label.italianDishAttr(for='dishName') Dish Name 
-        input#dishName(type='text', name='DishName', value=`${dishName}`) 
-    div.form-group 
-        label.italianDishAttr(for='dishPrice') Dish Price 
-        input#dishPrice(type='number', name='dishPrice', step='any', value=`${dishPrice}`) 
-    div.form-group 
-        label.italianDishAttr(for='mainIngredient') Main Ingredient
-        input#mainIngredient(type='text', name='mainIngredient', value=`${mainIngredient}`) 
-    input(type="submit") 
+  div.container(style='border: 2px solid #001253; width: 450px;')
+    h1(style="text-align: center; color: red;")= title 
+    br
+    - let dishId = toShow._id
+    - let dishName = toShow.dishName 
+    - let dishPrice = toShow.dishPrice 
+    - let mainIngredient = toShow.mainIngredient
+
+    div(class='container' style="text-align: center; width: 450px;")
+      div.row(class='mb-2') 
+        div(class='italianDishAttr col-4') ID is 
+        div(class='data col-6') #{dishId} 
+      - let actionid = "/resource/italianDish/" + dishId
+      form(id='dishForm', action=actionid, method="PUT") 
+        div(class="form-group row mb-2") 
+            label.italianDishAttr(for='dishName', class='col-4 col-from-label') Dish Name 
+            div(class='col-6' style='width: 250px;')
+              input#dishName(class='form-control', type='text', name='DishName', value=`${dishName}`) 
+        div(class="form-group row mb-2") 
+            label.italianDishAttr(for='dishPrice', class='col-4 col-from-label') Dish Price
+            div(class='col-6' style='width: 250px;') 
+              input#dishPrice(class='form-control', type='number', name='dishPrice', step='any', value=`${dishPrice}`) 
+        div(class="form-group row mb-2") 
+            label.italianDishAttr(for='mainIngredient', class='col-4 col-from-label') Main Ingredient
+            div(class='col-6' style='width: 250px;')
+              input#mainIngredient(class='form-control' type='text', name='mainIngredient', value=`${mainIngredient}`) 
+        input(class='btn btn-success' type="submit" style='width: 150px; margin: 6px;') 
  
   script. 
     document.forms['dishForm'].addEventListener('submit', (event) => { 

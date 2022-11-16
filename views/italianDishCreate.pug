@@ -1,20 +1,28 @@
 extends layout 
  
 block content 
-  h1= title 
- 
-  form(id='dishForm', action="/resource/italianDish", method="POST") 
-    div.form-group 
-        label.italianDishAttr(for='dishName') Dish Name 
-        input#costume_type(type='text', name='DishName') 
-    div.form-group 
-        label.italianDishAttr(for='dishPrice') Dish Price 
-        input#size(type='number', name='dishPrice', step='any') 
-    div.form-group 
-        label.italianDishAttr(for='mainIngredient') Main Ingredient
-        input#cost(type='text', name='mainIngredient') 
-    input(type="submit") 
- 
+  div(class='container', style='border: 2px solid #2192FF; width: 450px;')
+    h1(style="text-align: center; color: #FF1E1E")= title 
+    br
+    div(class='container' style="text-align: center; width: 450px;")
+      form(id='dishForm', action="/resource/italianDish", method="POST") 
+        div.form-group 
+          div(class="form-group row mb-2") 
+            label.italianDishAttr(for='dishName', class='col-4 col-from-label') Dish Name 
+            div(class='col-6' style='width: 250px;')
+              input#costume_type(class='form-control form-control-sm', type='text', name='DishName') 
+        div.form-group 
+          div(class="form-group row mb-2") 
+            label.italianDishAttr(for='dishPrice', class='col-4 col-from-label') Dish Price 
+            div(class='col-6' style='width: 250px;')
+              input#size(class='form-control form-control-sm', type='number', name='dishPrice', step='any') 
+        div.form-group
+          div(class="form-group row mb-2")  
+            label.italianDishAttr(for='mainIngredient', class='col-4 col-from-label') Main Ingredient
+            div(class='col-6' style='width: 250px;')
+              input#cost(class='form-control form-control-sm',  type='text', name='mainIngredient') 
+        input(class='btn btn-outline-success' type="submit" style='width: 150px; margin: 6px;') 
+
   script. 
     document.forms['dishForm'].addEventListener('submit', (event) => { 
       event.preventDefault(); 

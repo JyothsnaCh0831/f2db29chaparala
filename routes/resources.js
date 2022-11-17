@@ -27,16 +27,6 @@ router.get('/italianDish/:id', italianDish_controller.italianDish_detail);
 // GET request for list of all Dish items. 
 router.get('/italianDish', italianDish_controller.italianDish_list); 
 
-// GET detail italian dish page
-router.get('/detail', italianDish_controller.italianDish_view_one_Page); 
 
-/* GET create dish page */ 
-router.get('/create', italianDish_controller.italianDish_create_Page); 
-
-/* GET dish update page */ 
-router.get('/update', italianDish_controller.italianDish_update_Page); 
-
-/* GET delete dish page */ 
-router.get('/delete', italianDish_controller.italianDish_delete_Page); 
  
 module.exports = router; 

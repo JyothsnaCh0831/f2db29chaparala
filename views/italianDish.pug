@@ -1,15 +1,24 @@
 extends layout 
 
 block content
-    h1= title
-    - var results = results
-    div.container-fluid 
-        div.row 
-            each item, index in results
-                div.col-sm-2(onclick=`buy(${index})`) Dish: #{item["dishName"]} <br> Price: #{item["dishPrice"]} <br> Main Ingredient: #{item["mainIngredient"]}
-    
+    div(class='container')
+        h1(style="text-align: center; color: #863A6F")= title
+        - var results = results
+        div(class='container' style="text-align: center;")
+            div.row 
+                each item, index in results
+                    div(class='col-md')
+                        div(class='card', style='width: 18rem;')
+                            div(class='card-body')
+                                - let destination = `dispatch(\"/italianDish/update?id=${item._id}\")`
+                                div(class='card-text', onclick=`buy(${index})`) Dish: #{item["dishName"]} <br> Price: #{item["dishPrice"]} <br> Main Ingredient: #{item["mainIngredient"]}
+                                button.btn(class="btn-warning btn-sm ml-1", style="margin: 5px; width: 120px;", onclick= destination) Update 
 
     script.
         function buy(index) {
-            alert("You purchased item " + index)
+            alert("You purchased item " + index);
+        }
+
+        function dispatch(path) {
+            window.location.href = path;
         }

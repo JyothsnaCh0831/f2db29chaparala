@@ -10,9 +10,10 @@ block content
                     div(class='col-md')
                         div(class='card', style='width: 18rem;')
                             div(class='card-body')
-                                - let destination = `dispatch(\"/italianDish/update?id=${item._id}\")`
                                 div(class='card-text', onclick=`buy(${index})`) Dish: #{item["dishName"]} <br> Price: #{item["dishPrice"]} <br> Main Ingredient: #{item["mainIngredient"]}
-                                button.btn(class="btn-warning btn-sm ml-1", style="margin: 5px; width: 120px;", onclick= destination) Update 
+                                button.btn(class="btn-success btn-sm ml-1", style="margin: 5px; width: 120px;", onclick=`dispatch(\"/italianDish/detail?id=${item._id}\")`) View
+                                button.btn(class="btn-warning btn-sm ml-1", style="margin: 5px; width: 120px;", onclick= `dispatch(\"/italianDish/update?id=${item._id}\")`) Update
+                                button.btn(class="btn-danger btn-sm ml-1", style="margin: 5px; width: 120px;", onclick= `dispatch(\"/italianDish/delete?id=${item._id}\")`) Delete
 
     script.
         function buy(index) {

@@ -1,8 +1,9 @@
 extends layout 
 
 block content
-    div(class='container')
+    div(class='container' style="text-align: center;")
         h1(style="text-align: center; color: #863A6F")= title
+        button.btn(class="btn-primary btn-sm ml-1", style="margin: 5px; width: 120px;", onclick=`dispatch(\"/italianDish/create\")`) Create
         - var results = results
         div(class='container' style="text-align: center;")
             div.row 
